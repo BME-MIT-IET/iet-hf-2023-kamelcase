@@ -4,11 +4,11 @@
 
 A projekt során a korábbi Szoftver Projekt Laboratórium tárgy keretében létrehozott projektfeladatot szeretnénk tovább fejleszteni. Részletesen az alábbi feladatokat fogjuk elvégezni:
 1) Technológiai fókuszú feladatok
-  a) Continuous Integration (CI) beüzemelése
-  b) A korábban elkészített egységtesztek átvizsgálása, illetve kiegészítése
+	* Continuous Integration (CI) beüzemelése
+	* A korábban elkészített egységtesztek átvizsgálása, illetve kiegészítése
 2) Termék fókuszú feladatok
-  a) BDD tesztek készítése
-  b) Nem funkcionális jellemzők javítása, főként használhatóság, tehát User Experience (UX / felhasználói élmény) javítása
+	* BDD tesztek készítése
+	* Nem funkcionális jellemzők javítása, főként használhatóság, tehát User Experience (UX / felhasználói élmény) javítása
 
 ## GitHub Classroom link
 
