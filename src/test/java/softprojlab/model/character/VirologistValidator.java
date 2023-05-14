@@ -1,6 +1,6 @@
-package softprojlab.model;
+package softprojlab.model.character;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
@@ -8,8 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class GameValidator {
-
+public class VirologistValidator {
+    
     @BeforeAll
     static void setUp() {
 
@@ -18,7 +18,7 @@ public class GameValidator {
     @ParameterizedTest
     @MethodSource("getTestCase")
     void test(String testInput, String testOutput) {
-        Game testDummy = new Game();
+        Virologist testDummy = new Virologist(null);
         
         String mockOutput = "";
         
