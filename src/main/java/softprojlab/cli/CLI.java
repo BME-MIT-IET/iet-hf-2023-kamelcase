@@ -370,7 +370,7 @@ public class CLI {
                         "action", (String[] s) -> {
                             Virologist v = (Virologist) this.game.findUniqueObject(parseInt(s[2]));
                             if (v != null) {
-                                v.actionTokens = parseInt(s[4]);
+                                v.setActionTokens( parseInt(s[4]) );
                                 return true;
                             }
                             return false;

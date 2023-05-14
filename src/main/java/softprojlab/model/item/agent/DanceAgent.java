@@ -77,7 +77,7 @@ public class DanceAgent extends Agent {
 	public boolean decay() {
 		LogHandler.logFunctionCall(DanceAgent.logName, "decay");
 		if (this.target != null)
-			while (this.target.actionTokens > 0 ) {
+			while (this.target.getActionTokens() > 0 ) {
 				int randomNumber;
 	        	if (Game.randomness)
 	        		randomNumber = (int) Math.floor(Math.random() * 10);

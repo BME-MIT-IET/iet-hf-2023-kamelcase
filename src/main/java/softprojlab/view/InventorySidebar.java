@@ -108,7 +108,7 @@ public class InventorySidebar extends JPanel {
         ArrayList<String> wholeString = new ArrayList<String>();
         if(mainWindow.game.getCurrentVirologist() != null) {
         	wholeString.add(Integer.toString(mainWindow.game.getCurrentVirologist().getUid()));
-            wholeString.add(Integer.toString(mainWindow.game.getCurrentVirologist().actionTokens));
+            wholeString.add(Integer.toString(mainWindow.game.getCurrentVirologist().getActionTokens()));
             wholeString.add(Integer.toString(mainWindow.game.getCurrentVirologist().getNucleotideCount()));
             wholeString.add(Integer.toString(mainWindow.game.getCurrentVirologist().getAminoacidCount()));
 

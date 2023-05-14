@@ -305,7 +305,7 @@ public class Game {
 		for (Virologist player: playerList) {
 			if (player.getLocation() == null)
 				continue;
-			player.actionTokens = (roundCount > 5 ? 5 : roundCount);
+			player.setActionTokens( (roundCount > 5 ? 5 : roundCount) );
 		}
 		
 		// Setting to -1 so that when we "pass it over to the next player", the starting index will be 0

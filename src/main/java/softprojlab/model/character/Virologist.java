@@ -85,7 +85,7 @@ public class Virologist extends IdentifiableObject implements UpdateableCharacte
 	 * The number of actionTokens this character currently has. Characters can do actions by spending these tokens.
 	 * Characters get actionTokens at the start of each round. See exact cost of actions in the method descriptions of this class.
 	 */
-	public int actionTokens;
+	private int actionTokens;
 	
 	// Constructors
 	
@@ -190,6 +190,14 @@ public class Virologist extends IdentifiableObject implements UpdateableCharacte
 	}
 
 	// Public Methods
+	
+	public int getActionTokens() {
+	    return this.actionTokens;
+	}
+	
+	public void setActionTokens(int input) {
+	    this.actionTokens = input;
+	}
 	
 	/**
 	 * Add Aminoacid to this.aminoacidStorage.
