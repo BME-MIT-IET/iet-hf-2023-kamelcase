@@ -35,6 +35,7 @@ class ManualValidator {
         ManualValidator.directory = Path.of("./testfiles/");
         
         ManualValidator.append("01_StealFromParalyzedThenKillWithAxe.txt");
+        ManualValidator.append("02_SynthesiseAgentEnoughMaterialThenApplyAgentToUnprotected.txt");
     }
     
     static void append(String input) {
