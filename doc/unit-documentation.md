@@ -2,14 +2,14 @@
 
 ## Feladat (céljának) rövid leírása
 
-_TODO: feladat leírása_
+A feladat során egységteszteket írtunk az üzleti logika szempontjából két legfontosabb osztályra: Game, Virologist. A feladat megvalósítása során nem törekedtünk 100%-os kódlefedettségre, 
+viszont minden fontosabb metódust leteszteltünk.
 
 ## Megvalósítás főbb lépései
 
-1) _TODO: első nagyobb lépés_
-	* _alpontok_
-2) _TODO: második nagyobb lépés_
-
-## Releváns képek
-
-_TODO: releváns képek_
+1) JUnit keretrendszer hozzáadása a projekthez Maven-t használva.
+	* Fontos volt hogy a tesztek a `src/test/java` alkönyvtárban legyenek, hogy Maven-el is futtathatóak legyenek.
+2) Felosztottuk a két tesztelendő osztály tesztjeinek megírását:
+	* Game: Pfemeter Márton
+	* Virologist: Födémesi Lili
+3) Megvalósítottuk a teszteket, illetve a tesztelés során a Mockito keretrendszert is hozzáadtuk a projekthez Maven-t használva.
