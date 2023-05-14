@@ -4,6 +4,7 @@ package softprojlab.model;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 // Java imports
@@ -17,7 +18,10 @@ import java.util.function.Function;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+// project imports
+
 import softprojlab.model.character.Virologist;
+import softprojlab.model.field.Field;
 import softprojlab.model.field.PlainField;
 
 public class GameValidator {
@@ -25,6 +29,7 @@ public class GameValidator {
     // private variables
     
     private Game testDummy;
+    private Field testLocation;
     
     // constant variables
     
@@ -46,12 +51,14 @@ public class GameValidator {
     private final Function<String, Integer> INVALID_USER_ANSWER_CALLBACK = (input) -> {
         return this.INVALID_USER_ANSWER_INDEX;
     };
+    private final int TEST_UID = 404;
     
     // clean test setup
     
     @BeforeEach
     void setUp() {
         this.testDummy = new Game();
+        this.testLocation = new PlainField();
     }
 
     // map generation tests
@@ -77,9 +84,8 @@ public class GameValidator {
     
     @Test 
     void manualGenerateOneFieldWithOneVirologistThenStartNoExceptionTest() {
-        PlainField testLocation = new PlainField();
-        Virologist testPlayer = new Virologist(testLocation);
-        this.testDummy.addField(testLocation);
+        Virologist testPlayer = new Virologist(this.testLocation);
+        this.testDummy.addField(this.testLocation);
         
         assertDoesNotThrow(this.testDummy::startGame);
         
@@ -119,5 +125,19 @@ public class GameValidator {
         assertThrows(IndexOutOfBoundsException.class, () -> {
             Game.askYesNo(BASIC_USER_INPUT_QUESTION);
         });
+    }
+    
+    // UniqueObject test
+    
+    @Test
+    void addingThenGettingObjectWithUidTest() {
+        int assignedUid = this.testDummy.addNewUniqueObject(this.testLocation);
+        
+        assertEquals(this.testLocation, this.testDummy.findUniqueObject(assignedUid));
+    }
+    
+    @Test
+    void gettingObjectWithUidWithoutAddingTest() {
+        assertNull(this.testDummy.findUniqueObject(this.TEST_UID));
     }
 }
