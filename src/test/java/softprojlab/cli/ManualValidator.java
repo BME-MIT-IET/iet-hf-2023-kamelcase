@@ -1,6 +1,10 @@
 package softprojlab.cli;
 
+// JUnit static imports
+
 import static org.junit.jupiter.api.Assertions.*;
+
+// Java imports
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,6 +12,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.stream.Stream;
+
+// JUnit imports
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,7 +34,7 @@ class ManualValidator {
         
         ManualValidator.directory = Path.of("./testfiles/");
         
-        ManualValidator.append("name_of_test_file.txt");
+        ManualValidator.append("01_StealFromParalyzedThenKillWithAxe.txt");
     }
     
     static void append(String input) {
