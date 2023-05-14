@@ -464,10 +464,19 @@ public class Game {
 	}
 	
 	/**
+     * Generates the required objects to make the game playable, then starts the game.
+     * @param numberOfPlayers The number of players to add to the game.
+     */
+    public void generate(int numberOfPlayers) {
+        this.generate(numberOfPlayers, true);
+    }
+	
+	/**
 	 * Generates the required objects to make the game playable.
 	 * @param numberOfPlayers The number of players to add to the game.
+	 * @param startAfterGeneration Whether to call this.startGame after generation.
 	 */
-	public void generate(int numberOfPlayers) {
+	public void generate(int numberOfPlayers, boolean startAfterGeneration) {
 		randomness = true;
 
 		// Number of fields to generate (between 20 and 100)
@@ -531,12 +540,14 @@ public class Game {
 			}
 		}
 		
-		// Start the game after generation
-		try {
-			startGame();
-		} catch (Exception error) {
-			// Something is very wrong with the implementation of Game.generate() or Game.startGame if exception occurs here...
-			System.out.println("Error - Something went wrong generating the map. - " + error.getMessage());
+		if (startAfterGeneration) {
+    		// Start the game after generation
+    		try {
+    			this.startGame();
+    		} catch (Exception error) {
+    			// Something is very wrong with the implementation of Game.generate() or Game.startGame if exception occurs here...
+    			System.out.println("Error - Something went wrong generating the map. - " + error.getMessage());
+    		}
 		}
 	}
 }
