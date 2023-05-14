@@ -1,11 +1,18 @@
 package softprojlab.model;
 
-// static imports
+// static JUnit imports
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+// static Mockito imports
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.doCallRealMethod;
+import static org.mockito.ArgumentMatchers.anyInt;
 
 // Java imports
 
@@ -22,7 +29,7 @@ import org.junit.jupiter.api.Test;
 
 import softprojlab.model.character.Virologist;
 import softprojlab.model.field.Field;
-import softprojlab.model.field.PlainField;
+
 
 public class GameValidator {
 
@@ -30,6 +37,8 @@ public class GameValidator {
     
     private Game testDummy;
     private Field testLocation;
+    private Virologist testPlayer;
+    private int playerUpdateCallbackCounter;
     
     // constant variables
     
@@ -58,7 +67,22 @@ public class GameValidator {
     @BeforeEach
     void setUp() {
         this.testDummy = new Game();
-        this.testLocation = new PlainField();
+        
+        this.testPlayer = mock();
+        this.playerUpdateCallbackCounter = 0;
+        when(this.testPlayer.update()).then((input) -> {
+            ++this.playerUpdateCallbackCounter;
+            return input;
+        });
+        
+        this.testLocation = mock();
+        when(this.testLocation.getPlayers()).thenReturn(
+                                                        new ArrayList<Virologist>(
+                                                                                    List.of(this.testPlayer)
+                                                                                    )
+                                                        );
+        doCallRealMethod().when(this.testLocation).setUid(anyInt());
+        when(this.testLocation.getUid()).thenCallRealMethod();
     }
 
     // map generation tests
@@ -84,7 +108,6 @@ public class GameValidator {
     
     @Test 
     void manualGenerateOneFieldWithOneVirologistThenStartNoExceptionTest() {
-        Virologist testPlayer = new Virologist(this.testLocation);
         this.testDummy.addField(this.testLocation);
         
         assertDoesNotThrow(this.testDummy::startGame);
@@ -127,7 +150,7 @@ public class GameValidator {
         });
     }
     
-    // UniqueObject test
+    // UniqueObject tests
     
     @Test
     void addingThenGettingObjectWithUidTest() {
@@ -140,4 +163,6 @@ public class GameValidator {
     void gettingObjectWithUidWithoutAddingTest() {
         assertNull(this.testDummy.findUniqueObject(this.TEST_UID));
     }
+    
+    // round updating test
 }
