@@ -1,4 +1,4 @@
-# BDD tesztek készítésének dokumentációja
+# Manuális tesztek készítésének dokumentációja
 
 ## Feladat (céljának) rövid leírása
 
