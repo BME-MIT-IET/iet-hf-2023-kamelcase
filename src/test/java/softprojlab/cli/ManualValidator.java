@@ -27,6 +27,8 @@ class ManualValidator {
         ManualValidator.output = new ArrayList<String>();
         
         ManualValidator.directory = Path.of("./testfiles/");
+        
+        ManualValidator.append("name_of_test_file.txt");
     }
     
     static void append(String input) {
