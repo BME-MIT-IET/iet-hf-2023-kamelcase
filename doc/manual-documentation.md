@@ -2,14 +2,12 @@
 
 ## Feladat (céljának) rövid leírása
 
-_TODO: feladat leírása_
+A feladat során a szoftver konzolos be-/kimenetét használva definiáltunk manuális teszteket. Konkrét felhasználási eseteket definiáltunk, melyekhez való eljutáshoz megadtuk az elvárt 
+bemenetet, illetve a megfelelő parancsok után elvárt kimenetet. Minden teszt sikerességét JUnit keretrendszerrel ellenőrizzük.
 
 ## Megvalósítás főbb lépései
 
-1) _TODO: első nagyobb lépés_
+1) Tesztesetek definiálása
 	* _alpontok_
-2) _TODO: második nagyobb lépés_
-
-## Releváns képek
-
-_TODO: releváns képek_
+2) Tesztesetekhez a releváns be-/kimeneti fájlok elkészítése.
+3) Tesztesetek JUnit-al való ellenőrzése.
