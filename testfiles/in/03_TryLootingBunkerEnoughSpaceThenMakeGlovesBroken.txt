@@ -1,0 +1,35 @@
+create p
+create v
+create v
+create b
+set p 100 neighbor 103
+set b 103 neighbor 100
+set b 103 equipment glo
+set p 100 player 101
+set p 100 player 102
+set v 101 equipment bag
+set v 101 equipment glo
+set v 101 equipment axe
+set v 101 created dan
+set v 102 created dem
+game start
+game update
+virologist skip
+set v 102 action 3
+virologist spread dem 101
+1
+# (decision: player 101 uses his gloves -> timetolive = 2)
+virologist skip
+game update
+set v 101 action 6
+virologist move 103
+virologist spread dan 101
+1
+1
+# (decision: player 101 uses his gloves -> timetolive = 0 -> Gloves is broken)
+# (automatic action: virologist spread 101 dan again)
+virologist loot 103
+virologist skip
+game update
+show game
+
