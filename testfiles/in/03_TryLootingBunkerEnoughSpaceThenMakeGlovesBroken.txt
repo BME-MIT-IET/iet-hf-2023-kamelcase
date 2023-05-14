@@ -7,7 +7,7 @@ set b 103 neighbor 100
 set b 103 equipment glo
 set p 100 player 101
 set p 100 player 102
-set v 101 equipment bag
+set v 101 equipment glo
 set v 101 equipment glo
 set v 101 equipment axe
 set v 101 created dan
