@@ -17,6 +17,9 @@ import java.util.function.Function;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import softprojlab.model.character.Virologist;
+import softprojlab.model.field.PlainField;
+
 public class GameValidator {
 
     // private variables
@@ -51,7 +54,7 @@ public class GameValidator {
         this.testDummy = new Game();
     }
 
-    // tests
+    // map generation tests
     
     @Test
     void generateThenStartNoExceptionTest() {
@@ -71,7 +74,19 @@ public class GameValidator {
         
         assertThrows(Exception.class, this.testDummy::startGame);
     }
+    
+    @Test 
+    void manualGenerateOneFieldWithOneVirologistThenStartNoExceptionTest() {
+        PlainField testLocation = new PlainField();
+        Virologist testPlayer = new Virologist(testLocation);
+        this.testDummy.addField(testLocation);
+        
+        assertDoesNotThrow(this.testDummy::startGame);
+        
+    }
 
+    // user input tests
+    
     @Test
     void askUserMultiQuestionWithValidAnswerTest() {
         Game.questionCallback = this.VALID_USER_ANSWER_CALLBACK;
