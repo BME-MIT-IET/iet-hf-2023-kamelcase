@@ -10,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 // static Mockito imports
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -38,7 +40,6 @@ public class GameValidator {
     private Game testDummy;
     private Field testLocation;
     private Virologist testPlayer;
-    private int playerUpdateCallbackCounter;
     
     // constant variables
     
@@ -61,6 +62,7 @@ public class GameValidator {
         return this.INVALID_USER_ANSWER_INDEX;
     };
     private final int TEST_UID = 404;
+    private final int FIRST_ROUND_ACTION_TOKEN_COUNT = 1;
     
     // clean test setup
     
@@ -69,13 +71,12 @@ public class GameValidator {
         this.testDummy = new Game();
         
         this.testPlayer = mock();
-        this.playerUpdateCallbackCounter = 0;
-        when(this.testPlayer.update()).then((input) -> {
-            ++this.playerUpdateCallbackCounter;
-            return input;
-        });
-        
         this.testLocation = mock();
+        
+        when(this.testPlayer.getLocation()).thenReturn(this.testLocation);
+        when(this.testPlayer.getActionTokens()).thenCallRealMethod();
+        doCallRealMethod().when(this.testPlayer).setActionTokens(anyInt());
+        
         when(this.testLocation.getPlayers()).thenReturn(
                                                         new ArrayList<Virologist>(
                                                                                     List.of(this.testPlayer)
@@ -165,4 +166,22 @@ public class GameValidator {
     }
     
     // round updating test
+    
+    @Test
+    void updateRoundAndExpectCallbackCalledOnceTest() throws Exception {
+        this.testDummy.addField(this.testLocation);
+        this.testDummy.startGame();
+        this.testDummy.update();
+        
+        verify(this.testPlayer, times(1)).update();
+    }
+    
+    @Test
+    void updateRoundThenCheckActionTokenCount() throws Exception {
+        this.testDummy.addField(this.testLocation);
+        this.testDummy.startGame();
+        this.testDummy.update();
+        
+        assertEquals(this.FIRST_ROUND_ACTION_TOKEN_COUNT, this.testPlayer.getActionTokens());
+    }
 }
