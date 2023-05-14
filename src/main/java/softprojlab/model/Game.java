@@ -151,7 +151,7 @@ public class Game {
 	 */
 	private Field generateField(int index) {
 		// Random number for agent and equipment generation
-		int randomAgentOrEquipmentNumber = generator.nextInt() % 4;
+		int randomAgentOrEquipmentNumber = generator.nextInt(Integer.MAX_VALUE) % 4;
 		
 		switch (index) {
 		case 0: {
@@ -168,8 +168,8 @@ public class Game {
 		}
 		case 4: {
 			// Random number of Material, 0-5 range for each
-			int randomAmino = generator.nextInt() % 6;
-			int randomNucleotide = generator.nextInt() % 6;
+			int randomAmino = generator.nextInt(Integer.MAX_VALUE) % 6;
+			int randomNucleotide = generator.nextInt(Integer.MAX_VALUE) % 6;
 			return new Storage(randomAmino, randomNucleotide);
 		}
 		default:
@@ -480,7 +480,7 @@ public class Game {
 		randomness = true;
 
 		// Number of fields to generate (between 20 and 100)
-		int numberOfFields = (generator.nextInt() % 80) + 20;
+		int numberOfFields = (generator.nextInt(Integer.MAX_VALUE) % 80) + 20;
 		
 		int numberOfAgents = 5;
 		int numberOfEquipment = 4;
@@ -510,7 +510,7 @@ public class Game {
 		
 		// Generating rest of the Fields
 		while (playingMap.size() < numberOfFields) {
-			int randomFieldIndex = generator.nextInt() % 5;
+			int randomFieldIndex = generator.nextInt(Integer.MAX_VALUE) % 5;
 			playingMap.add(generateField(randomFieldIndex));
 		}
 		
@@ -518,7 +518,7 @@ public class Game {
 			
 			// Generating 4 random neighbors for each Field			
 			for (int i = 0; i < 4; ++i) {
-				int randomIndex = generator.nextInt() % playingMap.size();
+				int randomIndex = generator.nextInt(Integer.MAX_VALUE) % playingMap.size();
 				Field candidate = playingMap.get(randomIndex);
 				
 				// A random generation counts towards the 4 neighbors, even if they were already neighbors
