@@ -1,14 +1,16 @@
 package softprojlab.view;
 
 // Java imports
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 // Project imports
@@ -48,7 +50,30 @@ public abstract class ListItemManager extends JPanel {
 	private DarkLabel topText;
 	
 	// Protected Attributes
-	
+
+	/**
+	 * Background Image
+	 */
+	protected BufferedImage backgroundImage;
+
+	/**
+	 * Background Panel
+	 */
+
+	protected JPanel backgroundPanel = new JPanel()
+	{
+		@Override
+		protected void paintComponent(Graphics g){
+			super.paintComponent(g);
+			if(backgroundImage != null){
+				int width = backgroundPanel.getWidth();
+				int height = backgroundPanel.getHeight();
+
+				g.drawImage(backgroundImage, 0, 0, width, height, backgroundPanel);
+			}
+		}
+	};
+
 	/**
 	 * Container inside this.scrollHandler
 	 */
@@ -103,6 +128,12 @@ public abstract class ListItemManager extends JPanel {
 		
 		this.topText = new DarkLabel("");
 		this.add(this.topText, BorderLayout.NORTH);
+
+		try{
+			this.backgroundImage = ImageIO.read(new File("src/main/resources/wizardstartwallpaper.png"));
+		}catch (IOException e){
+			e.printStackTrace();
+		}
 		
 		this.selectedIndex = -1;
 		if (this.selectFirst) {

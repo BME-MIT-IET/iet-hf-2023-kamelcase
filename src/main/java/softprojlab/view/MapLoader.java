@@ -38,7 +38,7 @@ public class MapLoader {
     private File getMapsByOs() {
         File fs;
         if(System.getProperty("os.name").contains("Windows"))
-            fs = new File("C:\\maps");
+            fs = new File("src/main/resources/maps");
         else
             fs = new File("/tmp/maps");
         return fs;
