@@ -40,3 +40,9 @@ bemenetet, illetve a megfelelő parancsok után elvárt kimenetet. Minden teszt 
 		- Majd elmozdul a labor mezőre
 2) Tesztesetekhez a releváns be-/kimeneti fájlok elkészítése.
 3) Tesztesetek JUnit-al való ellenőrzése.
+
+## Releváns képek
+
+### A sikeres manuális tesztek az IDE-ben.
+
+![successful-test](All_tests_passed.png)
