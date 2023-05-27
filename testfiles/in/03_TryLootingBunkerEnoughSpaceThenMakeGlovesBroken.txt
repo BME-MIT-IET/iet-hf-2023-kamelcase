@@ -29,7 +29,6 @@ virologist spread dan 101
 # (decision: player 101 uses his gloves -> timetolive = 0 -> Gloves is broken)
 # (automatic action: virologist spread 101 dan again)
 virologist loot 103
-virologist skip
 game update
 show game
 

@@ -1,0 +1,22 @@
+create p
+create v
+create v
+create l
+set p 100 neighbor 103
+set l 103 neighbor 100
+set l 103 player 101
+set p 100 player 102
+set v 102 created dan
+set l 103 agent dem
+game start
+game update
+set v 101 action 10
+virologist loot
+virologist move 100
+virologist skip
+set v 102 action 11
+virologist spread dan 101
+virologist move 103
+virologist skip
+show game
+

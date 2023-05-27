@@ -30,7 +30,7 @@ class ManualValidator {
         ManualValidator.append("01_StealFromParalyzedThenKillWithAxe.txt");
         ManualValidator.append("02_SynthesiseAgentEnoughMaterialThenApplyAgentToUnprotected.txt");
         ManualValidator.append("03_TryLootingBunkerEnoughSpaceThenMakeGlovesBroken.txt");
-        ManualValidator.append("04_DestroyGlovesToApplyAgentThenAfterParalyzeDance.txt");
+        ManualValidator.append("04_TryLootingLaboratoryNewAgentAndApplyAgentToUnprotected.txt");
 
     }
 
