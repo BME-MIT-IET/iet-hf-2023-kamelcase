@@ -55,7 +55,7 @@ public class MapLoadView extends ListItemManager {
      */
     public MapLoadView(MainWindow root){
         super(500, 500, true);
-        this.loadGame = new DarkButton("Load Game");
+        this.loadGame = new DarkButton("START GAME");
         this.ml = new MapLoader();
 
         this.mainWindow = root;
@@ -74,14 +74,15 @@ public class MapLoadView extends ListItemManager {
      */
     private void init(ArrayList<String> mapList){
 
-        this.setOptions("Maps", mapList);
+        this.setOptions("", mapList);
 
         this.loadGame.addActionListener(this::loadGame);
 
         this.loadGame.setMaximumSize(new Dimension(100,50));
         this.loadGame.setHorizontalAlignment(SwingConstants.CENTER);
 
-		this.scrollContainer.add(this.loadGame);
+		this.scrollContainer.add(this.backgroundPanel);
+		this.backgroundPanel.add(this.loadGame);
 
         this.setBackground(Color.BLACK);
 

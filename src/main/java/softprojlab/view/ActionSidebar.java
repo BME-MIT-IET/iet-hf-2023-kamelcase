@@ -37,6 +37,16 @@ public class ActionSidebar extends ListItemManager {
     private MainWindow mainWindow;
 
     /**
+     * Agent generate success
+     */
+    private boolean successGeneratedAgent;
+
+    /**
+     * Kill success
+     */
+    private boolean successKilled;
+
+    /**
      * Default constructor.
      * @param root Reference to the single MainWindow instance.
      */
@@ -59,8 +69,12 @@ public class ActionSidebar extends ListItemManager {
     private void handleUserResponse(Integer index) {
         if(mainWindow.game.getCurrentVirologist() != null) {
             if(this.selectedIndex == 0) mainWindow.game.getCurrentVirologist().move(index);
-            else if (this.selectedIndex == 1) mainWindow.game.getCurrentVirologist().synthetiseAgent(generateAgent(index));
-            else if (this.selectedIndex == 2) mainWindow.game.getCurrentVirologist().kill(mainWindow.game.getCurrentVirologist().getLocation().getPlayers().get(index));
+            else if (this.selectedIndex == 1){
+                successGeneratedAgent = mainWindow.game.getCurrentVirologist().synthetiseAgent(generateAgent(index));
+            }
+            else if (this.selectedIndex == 2){
+                successKilled = mainWindow.game.getCurrentVirologist().kill(mainWindow.game.getCurrentVirologist().getLocation().getPlayers().get(index));
+            }
             else if (this.selectedIndex == 3) mainWindow.game.getCurrentVirologist().applyAgentTo(mainWindow.game.getCurrentVirologist().getLocation().getPlayers().get(index));
             else if (this.selectedIndex == 4) mainWindow.game.getCurrentVirologist().stealFrom(mainWindow.game.getCurrentVirologist().getLocation().getPlayers().get(index));
         }
@@ -70,9 +84,14 @@ public class ActionSidebar extends ListItemManager {
     @Override
     public void onListItemClicked() {
         if (this.selectedIndex == 0) {
-            String temp = StringFromFields();
-            if (temp != null && this.mainWindow.game.getCurrentVirologist().getLocation().getNeighbors().size() > 0) {
-                this.mainWindow.popup.askQuestion(temp, this::handleUserResponse);
+            if(mainWindow.game.getCurrentVirologist().actionTokens != 0){
+                String temp = StringFromFields();
+                if (temp != null && this.mainWindow.game.getCurrentVirologist().getLocation().getNeighbors().size() > 0) {
+                    this.mainWindow.popup.askQuestion(temp, this::handleUserResponse);
+                }
+            }
+            else{
+                this.mainWindow.popup.askQuestion("Not enough ActionTokens to Move\n PLEASE PRESS SKIP",  this::handleUserResponse);
             }
 
         } else if (this.selectedIndex == 1) {
@@ -80,24 +99,40 @@ public class ActionSidebar extends ListItemManager {
             if (temp != null) {
                 this.mainWindow.popup.askQuestion(temp, this::handleUserResponse);
             }
-
+            if (!successGeneratedAgent) {
+                this.mainWindow.popup.askQuestion("You can't generate this Agent\n OKAY", this::handleUserResponse);
+            }
         } else if (this.selectedIndex == 2) {
             String temp = StringFromVirologist();
             if (temp != null) {
                 this.mainWindow.popup.askQuestion(temp, this::handleUserResponse);
             }
+            if (!successKilled) {
+                this.mainWindow.popup.askQuestion("You can't kill him! :(\n OKAY", this::handleUserResponse);
+            }
 
         } else if (this.selectedIndex == 3) {
-            String temp = StringFromVirologist();
-            if (temp != null) {
-                this.mainWindow.popup.askQuestion(temp, this::handleUserResponse);
+            if (mainWindow.game.getCurrentVirologist().getSynthesisedAgentsCount() > 0) {
+                String temp = StringFromVirologist();
+                if (temp != null) {
+                    this.mainWindow.popup.askQuestion(temp, this::handleUserResponse);
+                }
+            }
+            else{
+                this.mainWindow.popup.askQuestion("You don't have any Agents to use\n OKAY",  this::handleUserResponse);
             }
         } else if (this.selectedIndex == 4) {
-            String temp = StringFromVirologist();
-            if (temp != null) {
-                this.mainWindow.popup.askQuestion(temp, this::handleUserResponse);
+            if(mainWindow.game.getCurrentVirologist().actionTokens >= 3) {
+                String temp = StringFromVirologist();
+                if (temp != null) {
+                    this.mainWindow.popup.askQuestion(temp, this::handleUserResponse);
+                }
+            }
+            else{
+                this.mainWindow.popup.askQuestion("You don't have enough ActionTokens to Steal\n OKAY",  this::handleUserResponse);
             }
         } else if (this.selectedIndex == 5) {
+            this.mainWindow.popup.askQuestion("NextPlayer is coming\n OKAY",  this::handleUserResponse);
         	mainWindow.game.nextVirologist();
         	if (mainWindow.game.getCurrentVirologist() == null)
         		mainWindow.game.update();
@@ -111,7 +146,7 @@ public class ActionSidebar extends ListItemManager {
         String temp = "Select a Field\n";
         if(mainWindow.game.getCurrentVirologist() != null) {
             for (int i = 0; i < mainWindow.game.getCurrentVirologist().getLocation().getNeighbors().size(); ++i)
-                temp += mainWindow.game.getCurrentVirologist().getLocation().getNeighbors().get(i).getUid() + "\n";
+                temp += mainWindow.game.getCurrentVirologist().getLocation().getNeighbors().get(i).getDisplayableName() + "\n";
             return temp;
         }
         return null;
@@ -122,7 +157,7 @@ public class ActionSidebar extends ListItemManager {
         if(mainWindow.game.getCurrentVirologist() != null) {
             for (int i = 0; i < mainWindow.game.getCurrentVirologist().getLocation().getPlayers().size(); ++i) {
             	Virologist iThVirologist = mainWindow.game.getCurrentVirologist().getLocation().getPlayers().get(i);
-            	temp += iThVirologist.getDisplayableName() + " " + iThVirologist.getUid() + "\n";
+            	temp += iThVirologist.getDisplayableName() + " " + iThVirologist.getUid() + " " + iThVirologist.getLocation().getDisplayableName() + "\n";
             }
             return temp;
         }

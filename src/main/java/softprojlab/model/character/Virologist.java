@@ -718,7 +718,9 @@ public class Virologist extends IdentifiableObject implements UpdateableCharacte
 	public int getNucleotideCount() {
 		return nucleotideStorage.size();
 	}
-	
+
+	public int getSynthesisedAgentsCount(){ return synthesisedAgents.size();}
+
 	public List<Agent> getDeepSynthesised() {
 		return Collections.unmodifiableList(synthesisedAgents);
 	}
