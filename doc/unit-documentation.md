@@ -13,3 +13,9 @@ viszont minden fontosabb metódust leteszteltünk.
 	* Game: Pfemeter Márton
 	* Virologist: Födémesi Lili
 3) Megvalósítottuk a teszteket, illetve a tesztelés során a Mockito keretrendszert is hozzáadtuk a projekthez Maven-t használva.
+
+## Releváns képek
+
+### A sikeresen lefutott egységtesztek eredménye.
+
+![passed-tests](passed-unit-tests.png)
