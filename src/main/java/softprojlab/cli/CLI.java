@@ -751,7 +751,10 @@ public class CLI {
 
             reader.close();
 
-            this.history.forEach(this::handleTopLvlCommand);
+            for (String entry : this.history) {
+                this.handleTopLvlCommand(entry);
+            }
+           // this.history.forEach(this::handleTopLvlCommand);
             return true;
         } catch (IOException e) {
             System.out.println("An error occurred during reading save file.");

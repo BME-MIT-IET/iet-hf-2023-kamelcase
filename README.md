@@ -7,7 +7,7 @@ A projekt során a korábbi Szoftver Projekt Laboratórium tárgy keretében lé
 	* Continuous Integration (CI) beüzemelése
 	* A korábban elkészített egységtesztek átvizsgálása, illetve kiegészítése
 2) Termék fókuszú feladatok
-	* BDD tesztek készítése
+	* Manuális tesztek készítése
 	* Nem funkcionális jellemzők javítása, főként használhatóság, tehát User Experience (UX / felhasználói élmény) javítása
 
 ## GitHub Classroom link
