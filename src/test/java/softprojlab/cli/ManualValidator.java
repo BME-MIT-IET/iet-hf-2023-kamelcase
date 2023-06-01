@@ -73,8 +73,6 @@ class ManualValidator {
         CLI testDummy = new CLI();
         testDummy.doExit = false;
 
-        // System.out.println("\n---------\nrunning test case: " + testInput + '\n');
-
         testDummy.loadHistory(testInput);
 
         String result = testDummy.handleShowCommandLocal("show game");
