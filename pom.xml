@@ -14,7 +14,8 @@
         <maven_compiler.version>3.1</maven_compiler.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-	<dependencies>
+
+	  <dependencies>
 
         
         <dependency>
@@ -25,5 +26,6 @@
         </dependency>
 
     </dependencies>
+
 
 </project>
