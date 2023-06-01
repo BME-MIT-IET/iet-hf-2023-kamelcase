@@ -1,0 +1,35 @@
+create l
+create p
+create v
+create v
+set l 100 agent dan
+set l 100 player 102
+set l 100 neighbor 101
+set p 101 neighbor 100
+set p 101 player 103
+set v 103 applied par
+set v 103 equipment bag
+set v 103 equipment axe
+game start
+game update
+set v 102 action 10
+virologist steal 103
+virologist skip
+virologist skip
+game update
+set v 102 action 10
+virologist move 101
+virologist steal 103
+virologist skip
+virologist skip
+game update
+set v 102 action 10
+virologist move 101
+virologist steal 103
+virologist skip
+virologist skip
+game update
+set v 102 action 5
+virologist kill 103
+virologist skip
+show game

@@ -1,0 +1,38 @@
+kind: Laboratory
+id: 100
+neighbors: 101
+virologists:
+agent: DanceAgent
+---
+kind: PlainField
+id: 101
+neighbors: 100
+virologists: 102
+---
+kind: Virologist
+id: 102
+position: 101
+agents:
+    applied:
+    learned:
+    crafted:
+equipments:
+  bag
+  bluntaxe
+materials:
+    aminoacids: 0
+    nucleotides: 0
+actionTokens: 0
+---
+kind: Virologist
+id: 103
+position: null
+agents:
+    applied:
+    learned:
+    crafted:
+equipments:
+materials:
+    aminoacids: 0
+    nucleotides: 0
+actionTokens: 0
