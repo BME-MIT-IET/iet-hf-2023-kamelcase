@@ -116,6 +116,7 @@ public abstract class Field extends IdentifiableObject {
 		ArrayList<Integer> neighborIds = new OutputArray<>();
 		ArrayList<Integer> playerIds = new OutputArray<>();
 
+
 		for (Field field : this.neighbors) {
 			neighborIds.add(field.getUid());
 		}
