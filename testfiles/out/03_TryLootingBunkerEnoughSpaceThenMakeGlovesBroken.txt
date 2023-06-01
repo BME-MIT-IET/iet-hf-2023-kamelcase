@@ -1,0 +1,39 @@
+kind: PlainField
+id: 100
+neighbors: 103
+virologists: 102
+---
+kind: Virologist
+id: 101
+position: 103
+agents:
+    applied:
+    learned:
+    crafted:
+equipments:
+  glo
+  glo
+  axe
+materials:
+    aminoacids: 0
+    nucleotides: 0
+actionTokens: 3
+---
+kind: Virologist
+id: 102
+position: 100
+agents:
+    applied:
+    learned:
+    crafted:
+equipments:
+materials:
+    aminoacids: 0
+    nucleotides: 0
+actionTokens: 3
+---
+kind: Bunker
+id: 103
+neighbors: 100
+virologists: 101
+equipment:

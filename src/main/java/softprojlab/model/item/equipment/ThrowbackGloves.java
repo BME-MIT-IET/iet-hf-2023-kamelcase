@@ -67,6 +67,7 @@ public class ThrowbackGloves extends Equipment {
 		if( remainingThrows > 0 && source != null) {
 			if (Game.askYesNo("Should the virologist throw back the Agent?")) {
 				remainingThrows--;
+				System.out.println(remainingThrows);
 				source.addToAppliedAgents(query, this.target);
 			}
 			if (remainingThrows <= 0)
@@ -78,7 +79,7 @@ public class ThrowbackGloves extends Equipment {
 
 	@Override
 	public String toYAML() {
-		return "glo" + remainingThrows;
+		return "glo";
 	}
 	
 	public String getDisplayableName() {

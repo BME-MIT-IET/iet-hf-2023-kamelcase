@@ -1,0 +1,40 @@
+kind: PlainField
+id: 100
+neighbors: 103
+virologists: 101
+---
+kind: Virologist
+id: 101
+position: 100
+agents:
+    applied:
+      - kind: DanceAgent
+        ttl: 2
+        target: 101
+    learned:
+      DementiaAgent
+    crafted:
+equipments:
+materials:
+    aminoacids: 0
+    nucleotides: 0
+actionTokens: 7
+---
+kind: Virologist
+id: 102
+position: 103
+agents:
+    applied:
+    learned:
+    crafted:
+equipments:
+materials:
+    aminoacids: 0
+    nucleotides: 0
+actionTokens: 7
+---
+kind: Laboratory
+id: 103
+neighbors: 100
+virologists: 102
+agent: DementiaAgent

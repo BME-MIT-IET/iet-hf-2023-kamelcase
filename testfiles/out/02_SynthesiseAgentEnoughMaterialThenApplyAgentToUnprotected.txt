@@ -1,0 +1,41 @@
+kind: Laboratory
+id: 100
+neighbors: 101
+virologists: 102
+agent: DanceAgent
+---
+kind: Laboratory
+id: 101
+neighbors: 100
+virologists: 103
+agent: ParalyzerAgent
+---
+kind: Virologist
+id: 102
+position: 100
+agents:
+    applied:
+    learned:
+      DanceAgent
+    crafted:
+equipments:
+materials:
+    aminoacids: 2
+    nucleotides: 2
+actionTokens: 0
+---
+kind: Virologist
+id: 103
+position: 101
+agents:
+    applied:
+      - kind: DanceAgent
+        ttl: 2
+        target: 103
+    learned:
+    crafted:
+equipments:
+materials:
+    aminoacids: 0
+    nucleotides: 0
+actionTokens: 0
