@@ -30,5 +30,6 @@ virologist spread dan 101
 # (automatic action: virologist spread 101 dan again)
 virologist loot 103
 game update
+set b 103 equipment axe
 show game
 

@@ -36,4 +36,4 @@ kind: Bunker
 id: 103
 neighbors: 100
 virologists: 101
-equipment:
+equipment: axe
