@@ -191,6 +191,14 @@ public class Virologist extends IdentifiableObject implements UpdateableCharacte
 
 	// Public Methods
 	
+	public int getActionTokens() {
+	    return this.actionTokens;
+	}
+	
+	public void setActionTokens(int input) {
+	    this.actionTokens = input;
+	}
+	
 	/**
 	 * Add Aminoacid to this.aminoacidStorage.
 	 * @param material The Aminoacid to add.

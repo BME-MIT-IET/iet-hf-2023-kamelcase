@@ -151,7 +151,7 @@ public class Game {
 	 */
 	private Field generateField(int index) {
 		// Random number for agent and equipment generation
-		int randomAgentOrEquipmentNumber = generator.nextInt() % 4;
+		int randomAgentOrEquipmentNumber = generator.nextInt(Integer.MAX_VALUE) % 4;
 		
 		switch (index) {
 		case 0: {
@@ -168,8 +168,8 @@ public class Game {
 		}
 		case 4: {
 			// Random number of Material, 0-5 range for each
-			int randomAmino = generator.nextInt() % 6;
-			int randomNucleotide = generator.nextInt() % 6;
+			int randomAmino = generator.nextInt(Integer.MAX_VALUE) % 6;
+			int randomNucleotide = generator.nextInt(Integer.MAX_VALUE) % 6;
 			return new Storage(randomAmino, randomNucleotide);
 		}
 		default:
@@ -305,7 +305,7 @@ public class Game {
 		for (Virologist player: playerList) {
 			if (player.getLocation() == null)
 				continue;
-			player.actionTokens = (roundCount > 5 ? 5 : roundCount);
+			player.setActionTokens( (roundCount > 5 ? 5 : roundCount) );
 		}
 		
 		// Setting to -1 so that when we "pass it over to the next player", the starting index will be 0
@@ -464,14 +464,23 @@ public class Game {
 	}
 	
 	/**
+     * Generates the required objects to make the game playable, then starts the game.
+     * @param numberOfPlayers The number of players to add to the game.
+     */
+    public void generate(int numberOfPlayers) {
+        this.generate(numberOfPlayers, true);
+    }
+	
+	/**
 	 * Generates the required objects to make the game playable.
 	 * @param numberOfPlayers The number of players to add to the game.
+	 * @param startAfterGeneration Whether to call this.startGame after generation.
 	 */
-	public void generate(int numberOfPlayers) {
+	public void generate(int numberOfPlayers, boolean startAfterGeneration) {
 		randomness = true;
 
 		// Number of fields to generate (between 20 and 100)
-		int numberOfFields = (generator.nextInt() % 80) + 20;
+		int numberOfFields = (generator.nextInt(Integer.MAX_VALUE) % 80) + 20;
 		
 		int numberOfAgents = 5;
 		int numberOfEquipment = 4;
@@ -501,7 +510,7 @@ public class Game {
 		
 		// Generating rest of the Fields
 		while (playingMap.size() < numberOfFields) {
-			int randomFieldIndex = generator.nextInt() % 5;
+			int randomFieldIndex = generator.nextInt(Integer.MAX_VALUE) % 5;
 			playingMap.add(generateField(randomFieldIndex));
 		}
 		
@@ -509,7 +518,7 @@ public class Game {
 			
 			// Generating 4 random neighbors for each Field			
 			for (int i = 0; i < 4; ++i) {
-				int randomIndex = generator.nextInt() % playingMap.size();
+				int randomIndex = generator.nextInt(Integer.MAX_VALUE) % playingMap.size();
 				Field candidate = playingMap.get(randomIndex);
 				
 				// A random generation counts towards the 4 neighbors, even if they were already neighbors
@@ -531,12 +540,14 @@ public class Game {
 			}
 		}
 		
-		// Start the game after generation
-		try {
-			startGame();
-		} catch (Exception error) {
-			// Something is very wrong with the implementation of Game.generate() or Game.startGame if exception occurs here...
-			System.out.println("Error - Something went wrong generating the map. - " + error.getMessage());
+		if (startAfterGeneration) {
+    		// Start the game after generation
+    		try {
+    			this.startGame();
+    		} catch (Exception error) {
+    			// Something is very wrong with the implementation of Game.generate() or Game.startGame if exception occurs here...
+    			System.out.println("Error - Something went wrong generating the map. - " + error.getMessage());
+    		}
 		}
 	}
 }

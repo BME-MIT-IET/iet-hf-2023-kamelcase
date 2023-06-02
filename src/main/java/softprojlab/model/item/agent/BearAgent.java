@@ -54,17 +54,17 @@ public class BearAgent extends DanceAgent{
         LogHandler.logFunctionCall(logName, "decay");
         
         if (this.target != null)
-	        while (target.actionTokens > 0) {
+	        while (target.getActionTokens() > 0) {
 	        	int randomNumber;
 	        	if (Game.randomness)
 	        		randomNumber = (int) Math.floor(Math.random() * 10);
 	        	else
 	        		randomNumber = Game.askForUserInput("Please choose which direction to move: ", new ArrayList<String>(List.of("0-9")), true);
 		        this.target.move(randomNumber);
-		        int old_tokens = target.actionTokens;
-		        this.target.actionTokens = 2;
+		        int old_tokens = target.getActionTokens();
+		        this.target.setActionTokens(2);
 		        this.target.tryLooting();
-		        this.target.actionTokens = old_tokens;
+		        this.target.setActionTokens(old_tokens);
 	        }
 
         LogHandler.decrementIndentation();

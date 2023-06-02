@@ -76,7 +76,7 @@ public class ParalyzerAgent extends Agent {
 	public boolean decay() {
 		LogHandler.logFunctionCall(ParalyzerAgent.logName, "decay");
 		if (this.target != null)
-			this.target.actionTokens = 0;
+			this.target.setActionTokens(0);
 		LogHandler.decrementIndentation();
 		return super.decay();
 	}
