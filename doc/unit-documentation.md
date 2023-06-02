@@ -10,7 +10,7 @@ viszont minden fontosabb metódust leteszteltünk.
 1) JUnit keretrendszer hozzáadása a projekthez Maven-t használva.
 	* Fontos volt hogy a tesztek a `src/test/java` alkönyvtárban legyenek, hogy Maven-el is futtathatóak legyenek.
 2) Felosztottuk a két tesztelendő osztály tesztjeinek megírását:
-	* Game: Pfemeter Márton
+#### Game: Pfemeter Márton
                 * Minden teszt előtt lefut a 'setUp' metódus, mely egy új Game példányt hoz létre az adott teszthez
                 * Ami Game osztály kivételével minden más modellbeli osztály mock-olva van Mockito keretrendszerrel
                 * Az alábbi főbb csoportokra oszlanak a megírt tesztek, melyek a GameValidator.java fájlban kommentekkel is el vannak választva:
@@ -23,7 +23,7 @@ viszont minden fontosabb metódust leteszteltünk.
                                 * Letesztelik a egyedi azonosítók generálása a játékbeli objektumokra tényleg szabályszerűen működik e
                         * round updating tests
                                 * Letesztelik már futó játék esetén a megfelelő callback metódusok meghívódnak e, illetve a Virologist (játékosok) állapota is helyen változik e
-	* Virologist: Födémesi Lili
+#### Virologist: Födémesi Lili
 3) Megvalósítottuk a teszteket, illetve a tesztelés során a Mockito keretrendszert is hozzáadtuk a projekthez Maven-t használva.
 
 ## Releváns képek
