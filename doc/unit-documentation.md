@@ -24,6 +24,19 @@ viszont minden fontosabb metódust leteszteltünk.
                         * round updating tests
                                 * Letesztelik már futó játék esetén a megfelelő callback metódusok meghívódnak e, illetve a Virologist (játékosok) állapota is helyen változik e
 #### Virologist: Födémesi Lili
+		* Minden teszt előtt lefut a setUp metódus, ami egy játék helyzetet teremt, majd ennek segítségével tudom a Virologist osztály különböző metódusait tesztelni.
+		* A metódusok nevei egyértelműen azonosítják, melyik funkciót tesztelem velük.
+		* Nem teszteltem az összes metódust, csak amiket tudtam illetve relevánsak voltak a játék főbb lépéseihez, illetve működéséhez.
+			*főbb funkcionalitások, amik tesztelve lettek:
+				* Aminoacid, Nukleotid, Equipment hozzáadása egy Virologisthoz
+				* ha találkoznak:
+					* ha egy mezőn vannak, tudnak-e egymásra Ágenst kenni.
+					* tudnak-e Equipmentet elvenni egymástól
+					* meg tudják-e ölni egymást
+					
+				
+			
+		
 3) Megvalósítottuk a teszteket, illetve a tesztelés során a Mockito keretrendszert is hozzáadtuk a projekthez Maven-t használva.
 
 ## Releváns képek
